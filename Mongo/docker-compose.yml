@@ -1,0 +1,44 @@
+version: '3'
+
+networks:
+  mongoCluster:
+
+services:
+
+
+  primary:
+    container_name: primary
+    image: mongo:5
+    command: mongod --port 27017 --replSet myReplicaSet
+    networks:
+      - mongoCluster
+    ports:
+      - 27017:27017
+    
+  secondary1:
+    container_name: secondary1
+    command: mongod --port 27017 --replSet myReplicaSet
+    image: mongo:5
+    networks:
+      - mongoCluster
+    ports:
+      - 27018:27017
+    
+  secondary2:
+    container_name: secondary2
+    image: mongo:5
+    command: mongod --port 27017 --replSet myReplicaSet
+    networks:
+      - mongoCluster
+    ports:
+      - 27019:27017
+
+  secondary3:
+    container_name: secondary3
+    command: mongod --port 27017 --replSet myReplicaSet
+    image: mongo:5
+    networks:
+      - mongoCluster
+    ports:
+      - 27020:27017
+
