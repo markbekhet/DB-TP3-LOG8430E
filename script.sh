@@ -18,13 +18,13 @@ cd ..
 printf "\nRunning Benchmarks on redis DB, results can be found in the redis folder \n\n"
 docker-compose -f redis/docker-compose.yml up --scale redis-master=1 --scale redis-replica=3 -d
 cd YCSB
-./bin/ycsb load redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" > ../redis/outputLoad.txt
-./bin/ycsb run redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" > ../redis/outputRun.txt
+./bin/ycsb load redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" -p "redis.clustert=true" > ../redis/outputLoad.txt
+./bin/ycsb run redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" -p "redis.clustert=true"> ../redis/outputRun.txt
 cd ..
 docker-compose -f redis/docker-compose.yml down -v
 printf "\nFinished benchmarking redis DB \n\n"
 
-# Run the container for Mongo DB and run the tests
+ Run the container for Mongo DB and run the tests
 printf "\nRunning Benchmarks on Mongo DB, results can be found in the Mongo folder \n\n"
 docker-compose -f Mongo/docker-compose.yml up -d
 cd Mongo
