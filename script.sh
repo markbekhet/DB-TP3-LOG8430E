@@ -21,7 +21,7 @@ cd YCSB
 ./bin/ycsb load redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" > ../redis/outputLoad.txt
 ./bin/ycsb run redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" > ../redis/outputRun.txt
 cd ..
-docker-compose -f redis/docker-compose.yml down
+docker-compose -f redis/docker-compose.yml down -v
 printf "\nFinished benchmarking redis DB \n\n"
 
 # Run the container for Mongo DB and run the tests
@@ -45,7 +45,7 @@ cd ../YCSB
 ./bin/ycsb load mongodb -s -P workloads/workloada -p mongodb.url=mongodb://192.168.5.2:27017/ycsb?w=0 > ../Mongo/outputLoad.txt
 ./bin/ycsb run mongodb -s -P workloads/workloada -p mongodb.url=mongodb://192.168.5.2:27017/ycsb?w=0 > ../Mongo/outputRun.txt
 cd ..
-docker-compose -f Mongo/docker-compose.yml down
+docker-compose -f Mongo/docker-compose.yml down -v
 printf "\nFinished benchmarking Mongo DB \n\n"
 
 # Cleaning up everything
