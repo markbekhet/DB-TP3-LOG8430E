@@ -1,7 +1,11 @@
 #install Pre-requirements
-sudo apt-get install git
-sudo apt-get install python2
-sudo apt-get install python3-virtualenv
+sudo apt-get install git -y
+sudo apt-get install python2 -y
+sudo apt-get install python3-virtualenv -y
+sudo apt-get install default-jre -y
+sudo apt-get install maven -y
+sudo apt-get -y install python2-pip-whl
+sudo apt-get -y install python2-setuptools-whl
 
 # create virtual environment and activate the virtual environment
 virtualenv -p /usr/bin/python2 venv
