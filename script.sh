@@ -87,7 +87,7 @@ docker exec -it primary mongosh --eval "rs.initiate({
 cd YCSB
 for i in (1..3)
 do
-printf "\n##################################################################################\n" > ../Mongo/outputLoadAsyncMongo.csv
+printf "\n##################################################################################\n" >> ../Mongo/outputLoadAsyncMongo.csv
 printf "Loading workoad A try $i\n" >> ../Mongo/outputLoadAsyncMongo.csv
 ./bin/ycsb load mongodb-async -s -P workloads/workloada -p mongodb.url=mongodb://192.168.5.2:27017/ycsb?w=0 >> ../Mongo/outputLoadAsyncMongo.csv
 printf "\n##################################################################################\n" > ../Mongo/outputRunAsyncMongo.csv
@@ -161,7 +161,7 @@ docker exec -it cassandra1 cqlsh 192.168.5.2 -u cassandra -p cassandra -e "creat
 
 for i in {1..3}
 do
-printf "\n##################################################################################\n" > ../cassandra/outputLoadCassandra.csv
+printf "\n##################################################################################\n" >> ../cassandra/outputLoadCassandra.csv
 printf "Loading workoad A try $i \n" >> ../cassandra/outputLoadCassandra.csv
 ./bin/ycsb load cassandra-cql -s -P workloads/workloada \
 -p "hosts=192.168.5.2,192.168.5.3,192.168.5.4,192.168.5.5" \
