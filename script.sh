@@ -85,7 +85,7 @@ docker exec -it primary mongosh --eval "rs.initiate({
 })"
 
 cd YCSB
-for i in (1..3)
+for i in {1..3}
 do
 printf "\n##################################################################################\n" >> ../Mongo/outputLoadAsyncMongo.csv
 printf "Loading workoad A try $i\n" >> ../Mongo/outputLoadAsyncMongo.csv
