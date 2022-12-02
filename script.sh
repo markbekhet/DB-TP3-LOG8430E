@@ -24,9 +24,11 @@ docker-compose -f redis/docker-compose.yml up --scale redis-master=1 --scale red
 cd YCSB
 for i in {1..3}
 do
+printf "\n##################################################################################\n" >> ../redis/outputLoadRedis.csv
 printf "Loading data worload A try $i \n" >> ../redis/outputLoadRedis.csv 
 ./bin/ycsb load redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" -p "redis.clustert=true" >> ../redis/outputLoadRedis.csv
-printf "Running test workoad A try $i\n" > ../redis/outputRunRedis.csv
+printf "\n##################################################################################\n" >> ../redis/outputRunRedis.csv
+printf "Running test workoad A try $i\n" >> ../redis/outputRunRedis.csv
 ./bin/ycsb run redis -s -P workloads/workloada -p "redis.host=127.0.0.1" -p "redis.port=6379" -p "redis.clustert=true" >> ../redis/outputRunRedis.csv
 
 printf "\n##################################################################################\n" >> ../redis/outputLoadRedis.csv 
@@ -90,8 +92,8 @@ do
 printf "\n##################################################################################\n" >> ../Mongo/outputLoadAsyncMongo.csv
 printf "Loading workoad A try $i\n" >> ../Mongo/outputLoadAsyncMongo.csv
 ./bin/ycsb load mongodb-async -s -P workloads/workloada -p mongodb.url=mongodb://192.168.5.2:27017/ycsb?w=0 >> ../Mongo/outputLoadAsyncMongo.csv
-printf "\n##################################################################################\n" > ../Mongo/outputRunAsyncMongo.csv
-printf "Running test workoad A try $i\n" > ../Mongo/outputRunAsyncMongo.csv
+printf "\n##################################################################################\n" >> ../Mongo/outputRunAsyncMongo.csv
+printf "Running test workoad A try $i\n" >> ../Mongo/outputRunAsyncMongo.csv
 ./bin/ycsb run mongodb-async -s -P workloads/workloada -p mongodb.url=mongodb://192.168.5.2:27017/ycsb?w=0 >> ../Mongo/outputRunAsyncMongo.csv
 
 printf "\n##################################################################################\n" >> ../Mongo/outputLoadAsyncMongo.csv
@@ -168,7 +170,7 @@ printf "Loading workoad A try $i \n" >> ../cassandra/outputLoadCassandra.csv
 -p "cassandra.password=cassandra" \
 -p "cassandra.username=cassandra" >> ../cassandra/outputLoadCassandra.csv
 
-printf "\n##################################################################################\n" > ../cassandra/outputRunCassandra.csv
+printf "\n##################################################################################\n" >> ../cassandra/outputRunCassandra.csv
 printf "Running tests workoad A try $i\n" >> ../cassandra/outputRunCassandra.csv
 ./bin/ycsb run cassandra-cql -s -P workloads/workloada \
 -p "hosts=192.168.5.2,192.168.5.3,192.168.5.4,192.168.5.5" \
