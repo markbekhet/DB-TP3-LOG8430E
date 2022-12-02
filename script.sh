@@ -85,7 +85,7 @@ docker exec -it primary mongosh --eval "rs.initiate({
    {_id: 3, host: \"192.168.5.5:27017\"}
  ]
 })"
-
+sleep 120
 cd YCSB
 for i in {1..3}
 do
